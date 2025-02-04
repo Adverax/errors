@@ -42,7 +42,7 @@ func CheckList[T any](options ...Option[T]) ([]T, error) {
 			if errs == nil {
 				errs = NewErrors()
 			}
-			errs.AddError(item.err)
+			errs.Add(item.err)
 		} else {
 			res = append(res, item.value)
 		}
