@@ -15,7 +15,7 @@ func NewErrors(es ...error) *Errors {
 		errors: make([]error, 0),
 	}
 	for _, e := range es {
-		res.AddError(e)
+		res.Add(e)
 	}
 	return res
 }
@@ -23,7 +23,7 @@ func NewErrors(es ...error) *Errors {
 func (that *Errors) Check(errs ...error) error {
 	for _, err := range errs {
 		if err != nil {
-			that.AddError(err)
+			that.Add(err)
 		}
 	}
 	return that.ResError()
@@ -53,7 +53,7 @@ func (that *Errors) Error() string {
 	return strings.Join(errStrings, "\n")
 }
 
-func (that *Errors) AddError(err error) {
+func (that *Errors) Add(err error) {
 	that.errors = append(that.errors, err)
 }
 
